@@ -1,0 +1,35 @@
+// criando um projeto com vite
+npm create vite@latest
+
+// os componentes react usar PascalCase
+//criar pastas para componentes/styles dentro de src, para fins de organização
+//nome de classe no tsx é className, para não confundir com class do JS
+
+// pacote de ícones, pode usar no lucide.dev
+
+// para fazer um componente poder usar "children" usar essa sintaxe de desestruturação, ou seja, para utilizar props
+type ContainerProps = {
+  children: React.ReactNode;
+};
+
+export function Container({ children }: ContainerProps) {
+  return (
+    <div className={styles.container}>
+      <div className={styles.content}>{children}</div>
+    </div>
+  );
+}
+
+// props são objetos que permitem passar dados de um componente pai para um componente filho, tornando os componentes dinâmicos e reutilizáveis, como por exemplo:
+const Saudacao = () => {
+      return <p>Olá, Jorge!</p>;
+    };
+Com props.
+Código
+    const SaudacaoComProps = (props) => {
+      return <p>Olá, {props.nome}!</p>;
+    };
+No componente pai, você o usaria assim:
+Código
+    <SaudacaoComProps nome="Maria" />
+
