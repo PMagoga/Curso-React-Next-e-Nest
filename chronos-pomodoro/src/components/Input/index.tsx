@@ -1,12 +1,16 @@
+import styles from "./styles.module.css";
+
 type InputProps = {
   id: string;
+  labelText?: string;
 } & React.ComponentProps<"input">;
 
-export function Input({ id, type }: InputProps) {
+export function Input({ id, type, labelText, ...rest }: InputProps) {
   return (
     <>
-      <label htmlFor={id}>Task</label>
-      <input id={id} type={type} />
+      {/* Condicional para tornar o labelText Opcional */}
+      {labelText && <label htmlFor={id}>{labelText}</label>}
+      <input className={styles.input} id={id} type={type} {...rest} />
     </>
   );
 }
