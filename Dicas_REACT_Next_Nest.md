@@ -80,3 +80,23 @@ Código
 É uma Utility Type do React que permite extrair as definições de propriedades (props) de um componente ou elemento nativo.
 
 <table><thead><tr><td>Conceito</td><td>Sintaxe</td><td>Explicação</td><td>Benefício Principal</td></tr></thead><tbody><tr><td><b>ComponentProps</b></td><td><code>React.ComponentProps&lt;T&gt;</code></td><td>Extrai as <i>props</i> esperadas pelo elemento ou componente <code>T</code>. O <code>T</code> pode ser o nome de um elemento HTML como <code>"input"</code>, <code>"button"</code>, etc., ou a referência a um componente React.</td><td>Permite que componentes personalizados aceitem <b>todas as <i>props</i> nativas</b> (como <code>onChange</code>, <code>className</code>, <code>disabled</code>, <code>type</code>, etc.) sem a necessidade de reescrever manualmente a tipagem.</td></tr></tbody></table>
+
+##### useState
+
+O hook useState do React permite rastrear o estado em um componente funcional.
+Estado geralmente se refere a dados ou propriedades que precisam ser rastreados em uma aplicação.
+A função `useState` aceita um estado inicial e retorna dois valores:
+
+- O estado atual.
+- Uma função que atualiza o estado.
+
+```
+import { useState } from "react";
+
+function FavoriteColor() {
+  const [color, setColor] = useState("red");
+}
+```
+
+O primeiro valor, `color`, representa nosso estado atual.
+O segundo valor, `setColor`, é a função usada para atualizar nosso estado.
