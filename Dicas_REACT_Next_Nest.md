@@ -81,6 +81,13 @@ Código
 
 <table><thead><tr><td>Conceito</td><td>Sintaxe</td><td>Explicação</td><td>Benefício Principal</td></tr></thead><tbody><tr><td><b>ComponentProps</b></td><td><code>React.ComponentProps&lt;T&gt;</code></td><td>Extrai as <i>props</i> esperadas pelo elemento ou componente <code>T</code>. O <code>T</code> pode ser o nome de um elemento HTML como <code>"input"</code>, <code>"button"</code>, etc., ou a referência a um componente React.</td><td>Permite que componentes personalizados aceitem <b>todas as <i>props</i> nativas</b> (como <code>onChange</code>, <code>className</code>, <code>disabled</code>, <code>type</code>, etc.) sem a necessidade de reescrever manualmente a tipagem.</td></tr></tbody></table>
 
+##### React Props
+
+Props são argumentos passados ​​para componentes React.
+Props são passados ​​para componentes através de atributos HTML.
+As props do React são como argumentos de função em JavaScript e atributos em HTML.
+Para enviar props para um componente, use a mesma sintaxe dos atributos HTML:
+
 ##### useState
 
 O hook useState do React permite rastrear o estado em um componente funcional.
