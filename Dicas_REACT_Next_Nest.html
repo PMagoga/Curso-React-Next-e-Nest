@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>criando um projeto com vite</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h3 id="criando-um-projeto-com-vite">criando um projeto com vite</h3>
+<pre><code>npm create vite@latest
+</code></pre>
+<ul>
+<li>
+<p>para os componentes react usar PascalCase</p>
+</li>
+<li>
+<p>criar pastas para componentes/styles dentro de src, para fins de organização</p>
+</li>
+<li>
+<p>nome de classe no tsx é className, para não confundir com class do JS</p>
+</li>
+<li>
+<p>pacote de ícones, pode usar no lucide.dev</p>
+</li>
+</ul>
+<h4 id="dicas-typescript">Dicas Typescript</h4>
+<h5 id="criar-o-tsconfigjson">criar o tsconfig.json</h5>
+<pre><code>npx tsc --init
+</code></pre>
+<h4 id="habilitar-o-node-ler-arquivos-typescript">habilitar o node ler arquivos typescript</h4>
+<pre><code>npm i tsx -D
+</code></pre>
+<h4 id="lib-para-buildar-projetos-em-typescript">lib para buildar projetos em typescript</h4>
+<p><code>npm i tsup </code> ==&gt; criar um outro script &quot;build&quot;: &quot;tsup src&quot;
+depois rodar <code>npm run build</code></p>
+<ul>
+<li>para fazer um componente poder usar &quot;children&quot; usar essa sintaxe de desestruturação, ou seja, para utilizar props</li>
+</ul>
+<pre><code class="language-javascript">type <span class="hljs-title class_">ContainerProps</span> = {
+  <span class="hljs-attr">children</span>: <span class="hljs-title class_">React</span>.<span class="hljs-property">ReactNode</span>,
+};
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">Container</span>(<span class="hljs-params">{ children }: ContainerProps</span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{styles.container}</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{styles.content}</span>&gt;</span>{children}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+</code></pre>
+<ul>
+<li>props são objetos que permitem passar dados de um componente pai para um componente filho, tornando os componentes dinâmicos e reutilizáveis, como por exemplo:</li>
+</ul>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> <span class="hljs-title function_">Saudacao</span> = (<span class="hljs-params"></span>) =&gt; {
+  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Olá, Jorge!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>;
+};
+</code></pre>
+<p>Com props.
+Código</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> <span class="hljs-title function_">SaudacaoComProps</span> = (<span class="hljs-params">props</span>) =&gt; {
+  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Olá, {props.nome}!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>;
+};
+</code></pre>
+<p>No componente pai, você o usaria assim:
+Código</p>
+<pre><code class="language-javascript">&lt;<span class="hljs-title class_">SaudacaoComProps</span> nome=<span class="hljs-string">&quot;Maria&quot;</span> /&gt;
+</code></pre>
+<h5 id="1-união-de-tipos----interseção">1. União de Tipos (&amp;) - Interseção</h5>
+<ul>
+<li>A união de tipos (ou interseção) em TypeScript, representada pelo símbolo &amp;, combina dois ou mais tipos em um novo tipo que deve satisfazer todos os tipos envolvidos.</li>
+</ul>
+<table><thead><tr><td>Conceito</td><td>Símbolo</td><td>Explicação</td><td>Exemplo de Uso</td></tr></thead><tbody><tr><td><b>Interseção</b></td><td><code>&amp;</code></td><td>Cria um tipo que possui <b>todas as propriedades</b> de <code>TipoA</code> <b>e</b> de <code>TipoB</code>. Se houver propriedades com o mesmo nome, seus tipos também se unem.</td><td><code>type NovoTipo = TipoA &amp; TipoB;</code></td></tr><tr><td><b>No React/Props</b></td><td><code>&amp;</code></td><td>Usado para <b>adicionar propriedades obrigatórias</b> a um tipo base, como as <i>props</i> nativas de um elemento HTML.</td><td><code>type Props = { id: string } &amp; BaseProps;</code></td></tr></tbody></table>
+<h4 id="1-reactcomponentprops">1. React.ComponentProps<T></h4>
+<p>É uma Utility Type do React que permite extrair as definições de propriedades (props) de um componente ou elemento nativo.</p>
+<table><thead><tr><td>Conceito</td><td>Sintaxe</td><td>Explicação</td><td>Benefício Principal</td></tr></thead><tbody><tr><td><b>ComponentProps</b></td><td><code>React.ComponentProps&lt;T&gt;</code></td><td>Extrai as <i>props</i> esperadas pelo elemento ou componente <code>T</code>. O <code>T</code> pode ser o nome de um elemento HTML como <code>"input"</code>, <code>"button"</code>, etc., ou a referência a um componente React.</td><td>Permite que componentes personalizados aceitem <b>todas as <i>props</i> nativas</b> (como <code>onChange</code>, <code>className</code>, <code>disabled</code>, <code>type</code>, etc.) sem a necessidade de reescrever manualmente a tipagem.</td></tr></tbody></table>
+<h5 id="react-props">React Props</h5>
+<p>Props são argumentos passados ​​para componentes React.
+Props são passados ​​para componentes através de atributos HTML.
+As props do React são como argumentos de função em JavaScript e atributos em HTML.
+Para enviar props para um componente, use a mesma sintaxe dos atributos HTML:</p>
+<h5 id="usestate">useState</h5>
+<p>O hook useState do React permite rastrear o estado em um componente funcional.
+Estado geralmente se refere a dados ou propriedades que precisam ser rastreados em uma aplicação.
+A função <code>useState</code> aceita um estado inicial e retorna dois valores:</p>
+<ul>
+<li>O estado atual.</li>
+<li>Uma função que atualiza o estado.</li>
+</ul>
+<pre><code>import { useState } from &quot;react&quot;;
+
+function FavoriteColor() {
+  const [color, setColor] = useState(&quot;red&quot;);
+}
+</code></pre>
+<p>O primeiro valor, <code>color</code>, representa nosso estado atual.
+O segundo valor, <code>setColor</code>, é a função usada para atualizar nosso estado.</p>
+<h5 id="context-api">Context API</h5>
+
+            
+            
+        </body>
+        </html>

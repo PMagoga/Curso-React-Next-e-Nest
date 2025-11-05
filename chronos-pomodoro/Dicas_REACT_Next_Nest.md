@@ -107,3 +107,24 @@ function FavoriteColor() {
 
 O primeiro valor, `color`, representa nosso estado atual.
 O segundo valor, `setColor`, é a função usada para atualizar nosso estado.
+
+##### Context API
+
+1. O que é Context API?
+   Definição: É uma API nativa do React que permite que dados sejam compartilhados em toda a árvore de componentes sem a necessidade de passar props manualmente em cada nível.
+
+Propósito Principal: Resolver o problema de "Prop Drilling" (perfuração de props), onde dados precisam ser passados por componentes intermediários que não os utilizam, apenas para chegar a um componente filho profundo.
+
+Filosofia: Cria um Estado Global para dados que são "globais" ou utilizados por muitos componentes em diferentes partes da aplicação.
+
+<table><thead><tr><td>Elemento</td><td>Função</td><td>Como Usar (Hook)</td></tr></thead><tbody><tr><td><b><code>createContext</code></b></td><td>Cria o objeto Context. É onde você define o valor padrão do contexto.</td><td><code>const MyContext = createContext(defaultValue);</code></td></tr><tr><td><b><code>Context.Provider</code></b></td><td>Envolve a parte da árvore de componentes que terá acesso aos dados. Recebe uma prop <code>value</code> contendo os dados e funções que serão compartilhados.</td><td><code>&lt;MyContext.Provider value={dados}&gt;</code></td></tr><tr><td><b><code>useContext</code></b></td><td>É o Hook que o componente utiliza para <b>consumir</b> (ler) os dados fornecidos pelo <code>Provider</code> mais próximo na árvore.</td><td><code>const dados = useContext(MyContext);</code></td></tr></tbody></table>
+
+3. Cenários de Uso (Quando Usar)
+   Use o Context API para compartilhar dados que são considerados "globais" ou que mudam com pouca frequência:
+
+- Tema/Estilo: Modo claro ou escuro (theme).
+- Autenticação de Usuário: Estado de login, dados do usuário logado.
+- Preferências: Idioma preferido da aplicação (locale).
+- Dados de Configuração: Variáveis que não mudam durante a sessão.
+
+<table><thead><tr><td>Vantagens</td><td>Desvantagens (e Cuidados)</td></tr></thead><tbody><tr><td><b>Solução Nativa:</b> Não requer bibliotecas externas (como Redux, Zustand).</td><td><b>Re-renderização Global:</b> Quando o <code>value</code> do <code>Provider</code> muda, <b>todos</b> os componentes que consomem esse Contexto são re-renderizados, mesmo que usem apenas uma pequena parte do valor.</td></tr><tr><td><b>Simples de Implementar:</b> É muito mais simples e rápido de configurar que bibliotecas robustas de gerenciamento de estado.</td><td><b>Dificuldade de Otimização:</b> Otimizar a performance pode ser complexo, especialmente se o contexto contém muitos dados dinâmicos ou não relacionados.</td></tr><tr><td><b>Evita Prop Drilling:</b> Resolve o problema de passar props por componentes que não precisam delas.</td><td><b>Não é um Substituído de Redux/Zustand:</b> Não é ideal para estados complexos, altamente dinâmicos, ou grandes volumes de dados que mudam constantemente.</td></tr></tbody></table>

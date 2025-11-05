@@ -1,6 +1,6 @@
 import * as React from "react";
-import {createContext} from "react";
-import type {TaskStateModel} from "../../models/TaskStateModel.ts";
+import { createContext, useContext, useState } from "react";
+import type { TaskStateModel } from "../../models/TaskStateModel.ts";
 
 const initialState: TaskStateModel = {
   tasks: [],
@@ -13,33 +13,34 @@ const initialState: TaskStateModel = {
     shortBreakTime: 5,
     longBreakTime: 15,
   },
-}
+};
 
 type TaskContextProps = {
   state: TaskStateModel;
   setState: React.Dispatch<React.SetStateAction<TaskStateModel>>;
-}
+};
 
 const initialContextValue = {
   state: initialState,
-  setState: () => {
-  },
-}
+  setState: () => {},
+};
 
-export const TaskContext = createContext<TaskContextProps>({
-  state: initialState,
-  setState: () => {
-  }
-})
+export const TaskContext = createContext<TaskContextProps>(initialContextValue);
 
 type TaskContextProviderProps = {
-  children: React.ReactNode
-}
+  children: React.ReactNode;
+};
 
-export function TaskContextProvider({children}: TaskContextProps) {
+export function TaskContextProvider({ children }: TaskContextProviderProps) {
+  const [state, setState] = useState(initialState);
+
   return (
-    <TaskContext.Provider value={{outraCoisa: 321}}>
+    <TaskContext.Provider value={{ state, setState }}>
       {children}
     </TaskContext.Provider>
-  )
+  );
+}
+
+export function useTaskContext() {
+  return useContext(TaskContext);
 }
