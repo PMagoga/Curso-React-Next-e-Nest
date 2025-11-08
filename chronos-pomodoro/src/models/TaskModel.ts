@@ -3,7 +3,7 @@ export type TaskModel = {
   name: string;
   duration: number; // duration in minutes
   startDate: number;
-  completDate: number | null;
-  interruptedDate: number | null;
-  type: "worktime" | "shortBreakTime" | "longBreakTime";
+  completeDate: number | null;
+  interruptDate: number | null;
+  type: "workTime" | "shortBreakTime" | "longBreakTime";
 };
